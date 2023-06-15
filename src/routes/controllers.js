@@ -191,7 +191,7 @@ async function createRecipe(req,res){
         return res.status(201).json(newRecipe)
     }
     catch(err){
-        return res.status(402).send(err.message)
+        return res.status(402).send("Hubo un error al crear la receta")
     }
 }
 
