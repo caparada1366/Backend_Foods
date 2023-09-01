@@ -57,7 +57,12 @@ async function getRecipeByID(req, res){
             }    
         }
     }catch(err){
-        return res.status(404).send(err.message);
+        if(err.response.data.code === 402){
+            res.status(402).send("Se acabaron las request de la key")
+        }else{
+            return res.status(500).send(err.message);
+        }
+        
     }
 }
 
@@ -170,7 +175,11 @@ async function getRecipeByName(req, res){
         }
     }
     catch (err){
-        res.status(404).send(err.message)
+        if(err.response.data.code === 402){
+            res.status(402).send("Se acabaron las request de la key")
+        }else{
+            return res.status(500).send(err.message);
+        }
     }    
 }
 
